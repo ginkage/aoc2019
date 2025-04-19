@@ -72,6 +72,17 @@ vector<int> split_i(const string &s, const string &delimiter) {
     return res;
 }
 
+vector<long> split_l(const string &s, const string &delimiter) {
+    vector<long> res;
+    size_t pos_start = 0;
+    for (size_t pos_end, delim_len = delimiter.length();
+            (pos_end = s.find(delimiter, pos_start)) != string::npos;
+            pos_start = pos_end + delim_len)
+        res.push_back(stol(s.substr(pos_start, pos_end - pos_start)));
+    res.push_back(stol(s.substr(pos_start)));
+    return res;
+}
+
 vector<uint64_t> split_u64(const string &s, const string &delimiter) {
     vector<uint64_t> res;
     size_t pos_start = 0;
